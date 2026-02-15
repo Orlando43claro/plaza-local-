@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | PlazaLocal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <nav class="bg-blue-800 text-white p-4 flex justify-between items-center shadow-lg">
+        <span class="font-bold">Mi Negocio - PlazaLocal</span>
+        <button id="logout" class="bg-red-500 px-3 py-1 rounded text-sm font-bold">Cerrar Sesión</button>
+    </nav>
+
+    <main class="max-w-2xl mx-auto p-6">
+        <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-100">
+            <h1 class="text-2xl font-bold mb-6 text-slate-800">Configurar mi Perfil</h1>
+            
+            <form id="panel-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Nombre de la Marca</label>
+                    <input type="text" id="p-nombre" required class="w-full p-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Tipo de Negocio</label>
+                    <select id="p-tipo" class="w-full p-3 rounded-xl border border-slate-200 outline-none">
+                        <option value="Producto">Vendo Productos (Ropa, Comida, etc)</option>
+                        <option value="Servicio">Ofrezco Servicios (Técnico, Barbero, etc)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">WhatsApp (Solo números: 57300...)</label>
+                    <input type="number" id="p-whatsapp" required class="w-full p-3 rounded-xl border border-slate-200 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Barrio</label>
+                    <input type="text" id="p-barrio" required placeholder="Ej: Centro" class="w-full p-3 rounded-xl border border-slate-200 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Categoría</label>
+                    <input type="text" id="p-categoria" required placeholder="Ej: Comida Rápida" class="w-full p-3 rounded-xl border border-slate-200 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">Descripción breve</label>
+                    <textarea id="p-desc" required class="w-full p-3 rounded-xl border border-slate-200 outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700">URL de Imagen (Link de foto)</label>
+                    <input type="url" id="p-img" placeholder="https://..." class="w-full p-3 rounded-xl border border-slate-200 outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-green-700 transition">
+                    Guardar y Publicar Negocio
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbYsQlbj2AF0Fy3Tgn_-0Z8DdyLeUaOq4",
+            authDomain: "plaza-local.firebaseapp.com",
+            projectId: "plaza-local",
+            storageBucket: "plaza-local.firebasestorage.app",
+            messagingSenderId: "987126404226",
+            appId: "1:987126404226:web:a1127b7b471acb18d6d09b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        let userUID;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userUID = user.uid;
+                const snap = await getDoc(doc(db, "comercios", user.uid));
+                if (snap.exists()) {
+                    const d = snap.data();
+                    document.getElementById('p-nombre').value = d.nombre || "";
+                    document.getElementById('p-tipo').value = d.tipo || "Producto";
+                    document.getElementById('p-whatsapp').value = d.whatsapp || "";
+                    document.getElementById('p-barrio').value = d.barrio || "";
+                    document.getElementById('p-categoria').value = d.categoria || "";
+                    document.getElementById('p-desc').value = d.descripcion || "";
+                    document.getElementById('p-img').value = d.imagenUrl || "";
+                }
+            } else { window.location.href = 'acceso.html'; }
+        });
+
+        document.getElementById('panel-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await updateDoc(doc(db, "comercios", userUID), {
+                nombre: document.getElementById('p-nombre').value,
+                tipo: document.getElementById('p-tipo').value,
+                whatsapp: document.getElementById('p-whatsapp').value,
+                barrio: document.getElementById('p-barrio').value,
+                categoria: document.getElementById('p-categoria').value,
+                descripcion: document.getElementById('p-desc').value,
+                imagenUrl: document.getElementById('p-img').value
+            });
+            alert("¡Negocio actualizado!");
+        });
+
+        document.getElementById('logout').addEventListener('click', () => {
+            signOut(auth).then(() => window.location.href = 'index.html');
+        });
+    </script>
+</body>
+</html>
