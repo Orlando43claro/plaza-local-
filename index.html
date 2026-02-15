@@ -1,213 +1,64 @@
 <!DOCTYPE html>
-<head><title>developer</title>
-
-<style>
-*{padding: 0;
-margin: 0;
-
-}
-
-body{width:100%; height: 100%; background: #ffffff;}
-  
- .section01{margin: 2px;  height: 12px; width:80%; }
-.section01 img{ height: 12px; float: right;} 
-  
-.container{ 
-height: 150px; width:100%;}
-
-#section1{text-align: center;
-width:44%; height: 150px; float: right; }
-#section1 img{border:  1px solid black; border-radius: 10px;  text-align: center;}
-
-  
-#section2{
-width:55%; height: 100px;}
-#titulo{ padding: 15px; margin: 10px; text-align: center;}
-
-#section3{
-width:55%; height: 49px; display: flex;}
-
-#section4{ width:50%; height: 49px; margin: 10px; text-align: center;}
-#linea{ height: 49px; border:  1px solid black;}
-#section5{width:50%; height: 49px; float: right; margin: 10px; text-align: center;}
-
-
-
-.nav{width:100%; height: 30px; text-align: center;}
-
-.nav a{display: block; text-decoration: none;
-    font-size: 16px; /* Tamaño de letra */
-    text-transform: uppercase; /* Letras en mayúscula */
-    background: #6B3618; /* Color de fondo */
-    padding: 10px 15px; /* Relleno */
-    margin: 10px;
-    color: #FFD059; /* Color de texto */
-    border-bottom: solid 2px #FFD059; /* Borde inferior */
-    border-radius: 10px; color: #ffffff;  }
-
-  #section03{
-width:100%; height: 49px; display: flex;}
-#section08{ width:10%;}
-  
-#section04{ width:50%; height: 49px; padding: 2px; 49px; float: right; margin: 10px; text-align: center;}
-
-#section05{width:50%; height: 49px; float: right; margin: 10px; text-align: center;}
-#section05 a{display: block; text-decoration: none;
-    font-size: 14px; /* Tamaño de letra */
-    text-transform: uppercase; /* Letras en mayúscula */
-    background: #6B3618; /* Color de fondo */
-    padding: 10px 15px; /* Relleno */
-    margin: 1px;
-    color: #FFD059; /* Color de texto */
-    border-bottom: solid 2px #FFD059; /* Borde inferior */
-    border-radius: 10px; color: #ffffff;  }
-
-  
-.main{   width:100%;  max-height: 220px;  display: flex; overflow-x: auto;}
-#section6 img{ border: 1px solid black; border-radius: 10px; height: 130px; width: 200px;  display: flex;}
-#section6{ margin: 5px; border-radius: 10px;  display: flex;}
-
-
-.footer{ width:90%; height: 100%; margin: 10px; }
-p{padding: 10px; }
-  
-  .version{ width:90%; height: 40px; }
-  
-  header1{display: flex; width:100%;}
-
-.logo1{ padding: 15px; width:10px;}
-.log1 { height 30px; width:30px; }
-.log1 img{  height: 30px; width:30px;}
-
-
-.nombre1{ padding: 20px; height 30px; width:100%;}
-.nombre1 p{font-size: 12px; }
-  header{ display: flex; height 60px; width:100%;}
-
-.logo{ padding: 15px; width:70px;}
-.log {height 60px; width:60px; text-align: center;}
-.log img{border:1px solid black; border-radius: 10px; height: 60px; width:60px;}
-
-.nombre{height 50px; width:100%;}
-.nombre p{font-size: 12px; }
-</style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlazaLocal | Compra y vende en tu ciudad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root { --azul-confianza: #1E40AF; }
+        .bg-azul-confianza { background-color: var(--azul-confianza); }
+    </style>
 </head>
-<body>
-  <section class="section01">
-  <img style="border: 0px solid; display: inline;" alt="contador de visitas" src="https://websmultimedia.com/contador-de-visitas.php?id=6615">
- </section>
-  
-  
-<div class="container">
-<section id="section1"><img src="1.webp" width="110"  height="110">
-</section>
+<body class="bg-slate-50 text-slate-800 font-sans">
 
-<section id="section2"><center><h2 id="titulo">Real Piano</h2></center>
-</section>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-800">
+                Plaza<span class="text-green-600">Local</span>
+            </a>
+            
+            <a href="acceso.html" class="px-4 py-2 rounded-lg bg-azul-confianza text-white text-sm font-bold shadow-md hover:bg-blue-700 transition">
+                Soy Comerciante
+            </a>
+        </div>
+    </nav>
 
-<section id="section3">
-<div id="section4">Versión<br><h5>1.21(20)</h5>
-</div>
-<div id="linea"></div>
-<div id="section5">Tamaño<br><h5>18 MB</h5>
-</div>
-</section>
-</div>
+    <header class="bg-azul-confianza py-20 px-4 text-center text-white">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-balance uppercase tracking-tight">Compra y vende en tu ciudad</h1>
+        <p class="text-blue-100 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+            La red oficial para conectar clientes con negocios y servicios locales de forma directa y segura.
+        </p>
+        
+        <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
+            <a href="productos.html" class="flex-1 bg-white p-8 rounded-2xl shadow-2xl hover:scale-105 transition transform text-slate-800 border border-slate-100 group">
+                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition">
+                    <i data-lucide="shopping-bag" class="text-blue-800 w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Ver Productos</h2>
+                <p class="text-slate-500 mt-2">Ropa, Comida, Tecnología, Hogar y más.</p>
+                <span class="inline-block mt-4 text-blue-700 font-bold text-sm uppercase">Explorar Tiendas &rarr;</span>
+            </a>
 
-<div class="nav"> 
-<a href="Real Piano_1.21_developer-shop.apk" download="Real Piano_1.21_developer-shop" ><center>Descargar</center></a>
-</div>
+            <a href="servicios.html" class="flex-1 bg-white p-8 rounded-2xl shadow-2xl hover:scale-105 transition transform text-slate-800 border border-slate-100 group">
+                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition">
+                    <i data-lucide="wrench" class="text-green-600 w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Ver Servicios</h2>
+                <p class="text-slate-500 mt-2">Barbería, Técnicos, Salud, Domicilios.</p>
+                <span class="inline-block mt-4 text-green-600 font-bold text-sm uppercase">Explorar Profesionales &rarr;</span>
+            </a>
+        </div>
+    </header>
 
-  <section id="section03">
-<div id="section08">
-</div>
-<div id="section04"><b>Calificación:</b><br>4.7<img src="19.png">
-</div>
-<div id="section05"><a href="comentarios.html" ><center>Comentarios</center></a> 
-</div>
-</section>
-  
-  
-  
-  
-  
-  
-<div class="main">
+    <footer class="py-10 text-center text-slate-400 text-xs">
+        <p>&copy; 2026 PlazaLocal - Conectando el comercio de proximidad.</p>
+    </footer>
 
-<section id="section6">
-<img src="2.webp" >
-</section>
-<section id="section6">
-<img src="3.webp">
-</section>
-<section id="section6">
-<img src="4.webp"  >
-</section>
-<section id="section6">
-<img src="5.webp" >
-
-</div>
-
-<div class="footer">
-<p>
-<h4>Descripción:</h4><br><p>Mejor aplicación de piano para android. Disfrutar de la diversión.</p>
-</div>
-  
- <div class="version">
-<pre><h3>     Otras Versiones </h3>
-</pre>
-</div>
- 
-   <header>
-<div class="logo">
-<div class="log">
-<a href="Real Piano_1.21_developer-shop.apk" download="Real Piano_1.21_developer-shop"" ><img src="1.webp" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-Real Piano
-versión  1.21(20)
-tamaño   18 MB
-</p>
-</pre>
-</div>
-</header>
-  
-    <header>
-<div class="logo">
-<div class="log">
-<a href="Real Piano_1.20_developer_shop.apk" download="Real Piano_1.20_developer_shop" ><img src="1.webp" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-Real Piano
-versión  1.20(21)
-tamaño   18.35MB
-</p>
-</pre>
-</div>
-</header>
-  
-   <header>
-<div class="logo">
-<div class="log">
-<a href="Real Piano_1.19_developer-shop.apk" download="Real Piano_1.19_developer-shop" ><img src="1.webp" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-Real Piano
-versión  1.19(20)
-tamaño   18.24 MB
-</p>
-</pre>
-</div>
-</header>
-    
-  
-  
-  
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+    </script>
 </body>
 </html>
